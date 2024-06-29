@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.Trading_Luck" parent="Base.Theme.Trading_Luck" />
+    <style name = "SplashTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
 </resources>
