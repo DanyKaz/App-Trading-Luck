@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/bg"
     tools:context=".MainActivity2">
 
     <ImageView
@@ -24,6 +24,7 @@
         android:layout_height="48dp"
         android:background="@android:color/transparent"
         android:contentDescription="NULL"
+        android:onClick="btnBack"
         android:padding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -36,6 +37,7 @@
         android:layout_width="110dp"
         android:layout_height="34dp"
         android:layout_marginTop="40dp"
+        android:onClick="btnLast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

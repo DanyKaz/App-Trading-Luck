@@ -1,6 +1,8 @@
 package com.dam_2.trading_luck;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,15 @@ public class MainActivity_profit extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    public void btnBack(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+    }
+    public void btnLast(View view){
+        Intent intent = new Intent(this, MainActivity_graph.class);
+        startActivity(intent);
+
     }
 }
