@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.net.Uri;
+import android.widget.VideoView;
+import android.media.MediaPlayer;
+import android.widget.MediaController;
 
 import java.util.Random;
 
@@ -28,17 +32,63 @@ public class MainActivity_graph extends AppCompatActivity {
 
         Random rn = new Random();
         int num = rn.nextInt(2);
-        imageView = findViewById(R.id.imageView6);
         switch (num){
-            case 1:
-                imageView.setImageResource(R.drawable.comp1);
+            case 0:
+                VideoView videoView = findViewById(R.id.videoView);
+
+                Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.angood);
+                videoView.setVideoURI(videoUri);
+
+                MediaController mediaController = new MediaController(this);
+                videoView.setMediaController(mediaController);
+                mediaController.setAnchorView(videoView);
+
+                videoView.start();
+
+                videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        // Действие после завершения воспроизведения
+                    }
+                });
+
+                videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                    @Override
+                    public boolean onError(MediaPlayer mp, int what, int extra) {
+                        return true;
+                    }
+                });
                 break;
-            case 2:
-                imageView.setImageResource(R.drawable.comp3);
+            case 1:
+                VideoView videoView1 = findViewById(R.id.videoView);
+
+                Uri videoUri1 = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.anbad);
+                videoView1.setVideoURI(videoUri1);
+
+                MediaController mediaController1 = new MediaController(this);
+                videoView1.setMediaController(mediaController1);
+                mediaController1.setAnchorView(videoView1);
+
+                videoView1.start();
+
+                videoView1.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        // Действие после завершения воспроизведения
+                    }
+                });
+
+                videoView1.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                    @Override
+                    public boolean onError(MediaPlayer mp, int what, int extra) {
+                        return true;
+                    }
+                });
                 break;
 
         }
 
-
     }
+
+
 }
