@@ -1,6 +1,9 @@
 package com.dam_2.trading_luck;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +21,7 @@ import java.util.Random;
 public class MainActivity_graph extends AppCompatActivity {
     private ImageView imageView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,9 @@ public class MainActivity_graph extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        String value;
+        value = getIntent().getStringExtra("key");
+
 
 
         Random rn = new Random();
@@ -45,9 +52,22 @@ public class MainActivity_graph extends AppCompatActivity {
 
                 videoView.start();
 
+
+                String finalValue1 = value;
                 videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
+                        Intent intent;
+
+                        if (finalValue1.equals("Buy")){
+                            intent = new Intent(MainActivity_graph.this, MainActivity_profit.class);
+
+                        } else {
+                            intent = new Intent(MainActivity_graph.this, MainActivity2.class);
+
+                        }
+                        startActivity(intent);
+
                         // Действие после завершения воспроизведения
                     }
                 });
@@ -70,10 +90,20 @@ public class MainActivity_graph extends AppCompatActivity {
                 mediaController1.setAnchorView(videoView1);
 
                 videoView1.start();
+                String finalValue2 = value;
 
                 videoView1.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
+                        Intent intent;
+                        if (finalValue2.equals("Buy")){
+                            intent = new Intent(MainActivity_graph.this, MainActivity2.class);
+                        } else{
+                            intent = new Intent(MainActivity_graph.this, MainActivity_profit.class);
+
+                        }
+                        startActivity(intent);
+
                         // Действие после завершения воспроизведения
                     }
                 });

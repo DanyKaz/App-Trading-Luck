@@ -28,9 +28,5 @@ public class MainActivity_profit extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public void btnLast(View view){
-        Intent intent = new Intent(this, MainActivity_graph.class);
-        startActivity(intent);
 
-    }
 }

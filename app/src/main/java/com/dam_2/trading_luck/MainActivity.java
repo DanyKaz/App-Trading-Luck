@@ -55,12 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void btnBuy(View v){
-
-        Intent intent = new Intent(this, MainActivity_graph.class);
-        startActivity(intent);
-
-
-
+        String value="Buy";
+        Intent i = new Intent(this, MainActivity_graph.class);
+        i.putExtra("key",value);
+        startActivity(i);
+    }
+    public void btnSell(View v){
+        String value="Sell";
+        Intent i = new Intent(this, MainActivity_graph.class);
+        i.putExtra("key",value);
+        startActivity(i);
     }
 
 }

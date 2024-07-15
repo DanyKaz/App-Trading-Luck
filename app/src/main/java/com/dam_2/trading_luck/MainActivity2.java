@@ -27,8 +27,5 @@ public class MainActivity2 extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void btnLast(View v){
-        Intent intent = new Intent(this, MainActivity_graph.class);
-        startActivity(intent);
-    }
+
 }
