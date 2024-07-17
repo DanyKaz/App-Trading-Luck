@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Animation compAnim;
 
     private ImageView rotImage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         rotImage = findViewById(R.id.imageView8);
 
         rotImage.startAnimation(compAnim);
+
+
+
+
+
+
+
 
 
 
@@ -66,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("key",value);
         startActivity(i);
     }
+    public void btnSet(View v){
+        Settings settings = new Settings();
+        settings.show(getSupportFragmentManager(), "TAG");
+
+    }
+
 
 }
