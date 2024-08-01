@@ -2,6 +2,7 @@ package com.dam_2.trading_luck;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,6 +20,7 @@ public class MainActivity_profit extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private static final String FILE_NAME = "MY_FILE_NAME";
     private static final String CHACKED_SWITCH = "CHACKED_SWITCH";
+    private static final String CHACKED_SWITCH2 = "CHACKED_SWITCH2";
     private ImageView btn1;
     private ImageButton btn2;
 
@@ -34,6 +36,7 @@ public class MainActivity_profit extends AppCompatActivity {
         });
         settings = getSharedPreferences(FILE_NAME, MODE_PRIVATE);
         int checkedSwitch = settings.getInt(CHACKED_SWITCH, 0);
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
         btn1 = findViewById(R.id.imageView);
         btn2 = findViewById(R.id.imageButton);
         switch (checkedSwitch){
@@ -46,10 +49,20 @@ public class MainActivity_profit extends AppCompatActivity {
                 btn2.setImageResource(R.drawable.ruback);
                 break;
         }
+        if (checkedSwitch2 == 1){
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.good);
+            mp.start();
+        }
     }
     public void btnBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
+        if(checkedSwitch2 == 1){
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
+            mp.start();
+
+        }
 
     }
 

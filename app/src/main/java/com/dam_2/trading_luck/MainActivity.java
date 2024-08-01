@@ -2,6 +2,7 @@ package com.dam_2.trading_luck;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private static final String FILE_NAME = "MY_FILE_NAME";
     private static final String CHACKED_SWITCH = "CHACKED_SWITCH";
+    private static final String CHACKED_SWITCH2 = "CHACKED_SWITCH2";
+
 
 
 
@@ -83,27 +86,40 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void getSound(){
+           int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
+           if(checkedSwitch2 == 1){
+               MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
+               mp.start();
 
+           }
+   }
 
 
 
 
 
     public void btnBuy(View v){
+
         String value="Buy";
         Intent i = new Intent(this, MainActivity_graph.class);
         i.putExtra("key",value);
         startActivity(i);
+        getSound();
     }
     public void btnSell(View v){
+
         String value="Sell";
         Intent i = new Intent(this, MainActivity_graph.class);
         i.putExtra("key",value);
         startActivity(i);
+        getSound();
     }
     public void btnSet(View v){
+
         Settings settings = new Settings();
         settings.show(getSupportFragmentManager(), "TAG");
+        getSound();
 
     }
 
