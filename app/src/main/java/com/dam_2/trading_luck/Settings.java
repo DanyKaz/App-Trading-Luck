@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Switch;
+import android.media.AudioManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 public class Settings extends BottomSheetDialogFragment {
     public Settings() {
     }
+
+    SeekBar volumeSeekBar;
+    AudioManager audioManager;
     SharedPreferences settings;
     SharedPreferences.Editor editor;
     private static final String FILE_NAME = "MY_FILE_NAME";
@@ -35,11 +40,32 @@ public class Settings extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.settings, container, false);
         settings = getContext().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         int checkedSwitch = settings.getInt(CHACKED_SWITCH, 0);
-        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 3);
         ImageView picLang = (ImageView)view.findViewById(R.id.imageView6);
         ImageView picVol = (ImageView)view.findViewById(R.id.imageView7);
         ImageView picSound = (ImageView)view.findViewById(R.id.imageView10);
 
+        audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+        volumeSeekBar = view.findViewById(R.id.volumeSeekBar);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        volumeSeekBar.setMax(maxVolume);
+        volumeSeekBar.setProgress(currentVolume);
+
+        volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
 
 
@@ -110,7 +136,7 @@ public class Settings extends BottomSheetDialogFragment {
 
                 }
                 editor.commit();
-                if(rootSound == 1){
+                if(rootSound == 0){
                     MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.tap);
                     mp.start();
                 }
@@ -129,7 +155,7 @@ public class Settings extends BottomSheetDialogFragment {
                     rootSound = 0;
                 }
                 editor.commit();
-                if(rootSound == 1){
+                if(rootSound == 0){
                     MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.tap);
                     mp.start();
                 }

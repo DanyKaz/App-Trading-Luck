@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getSound(){
-           int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
-           if(checkedSwitch2 == 1){
+           int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 3);
+           if(checkedSwitch2 == 0){
                MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
                mp.start();
 

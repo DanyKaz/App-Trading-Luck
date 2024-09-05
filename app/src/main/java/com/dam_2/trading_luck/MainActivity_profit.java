@@ -36,7 +36,7 @@ public class MainActivity_profit extends AppCompatActivity {
         });
         settings = getSharedPreferences(FILE_NAME, MODE_PRIVATE);
         int checkedSwitch = settings.getInt(CHACKED_SWITCH, 0);
-        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 3);
         btn1 = findViewById(R.id.imageView);
         btn2 = findViewById(R.id.imageButton);
         switch (checkedSwitch){
@@ -49,7 +49,7 @@ public class MainActivity_profit extends AppCompatActivity {
                 btn2.setImageResource(R.drawable.ruback);
                 break;
         }
-        if (checkedSwitch2 == 1){
+        if (checkedSwitch2 == 0){
             MediaPlayer mp = MediaPlayer.create(this, R.raw.good);
             mp.start();
         }
@@ -57,8 +57,8 @@ public class MainActivity_profit extends AppCompatActivity {
     public void btnBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
-        if(checkedSwitch2 == 1){
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 3);
+        if(checkedSwitch2 == 0){
             MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
             mp.start();
 

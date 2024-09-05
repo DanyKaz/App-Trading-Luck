@@ -49,8 +49,8 @@ public class MainActivity2 extends AppCompatActivity {
                 btn2.setImageResource(R.drawable.ruback);
                 break;
         }
-        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
-        if(checkedSwitch2 == 1){
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 3);
+        if(checkedSwitch2 == 0){
             MediaPlayer mp = MediaPlayer.create(this, R.raw.bad);
             mp.start();
 
@@ -58,8 +58,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
     public void btnBack(View v){
-        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 0);
-        if(checkedSwitch2 == 1){
+        int checkedSwitch2 = settings.getInt(CHACKED_SWITCH2, 3);
+        if(checkedSwitch2 == 0){
             MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
             mp.start();
 
